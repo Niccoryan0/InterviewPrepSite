@@ -161,7 +161,7 @@ namespace InterviewPrepApp.Data
                 new TechnicalQ
                 {
                     Id = 20,
-                    Question = "What is the difference between an abstract method and an interface?",
+                    Question = "What is the difference between an abstract class and an interface?",
                     Answer = "An abstract class allows you to create functionality that subclasses can implement or override. An interface only allows you to define functionality, not implement it. And whereas a class can extend only one abstract class, it can take advantage of multiple interfaces. ",
                     Category = "General"
                 },
@@ -322,7 +322,6 @@ namespace InterviewPrepApp.Data
             );
             #endregion
 
-            // TODO: This stuff
             #region WhiteboardQSeeding
             builder.Entity<WhiteboardQ>().HasData(
                 new WhiteboardQ 

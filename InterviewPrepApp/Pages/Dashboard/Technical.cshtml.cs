@@ -18,6 +18,7 @@ namespace InterviewPrepApp.Pages.Questions.Dashboard
         [BindProperty]
         public TechnicalViewModel Question { get; set; }
 
+
         public TechnicalModel(ITechnicalQ questions)
         {
             _questions = questions;

@@ -4,23 +4,16 @@
 @section DashTable {
     <div class="card">
         <form method="post" class="add-form">
-            @RenderSection("FormInsides", true);
+            @RenderSection("FormInsides", true)
         </form>
     </div>
-
-
     <table class="table">
         <thead>
-            @RenderSection("TableHead", true);
+            @RenderSection("TableHead", true)
 
         </thead>
         <tbody>
-            @foreach (var item in Model.AllQs)
-            {
-                <tr>
-                    @RenderSection("TableRows", true);
-                </tr>
-            }
+            @RenderSection("TableRows", true)
         </tbody>
     </table>
 }
