@@ -26,5 +26,6 @@ namespace InterviewPrepApp.Models.Interface
         /// <param name="question">Question to be added to database</param>
         /// <returns>Task of completion for question creation</returns>
         Task Create(BehavioralQ question);
+
     }
 }

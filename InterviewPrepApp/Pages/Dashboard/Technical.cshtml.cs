@@ -38,6 +38,7 @@ namespace InterviewPrepApp.Pages.Questions.Dashboard
                 Category = Question.Category
             };
             await _questions.Create(question);
+            AllQs = await _questions.GetTechnicalQs();
             return Page();
         }
 

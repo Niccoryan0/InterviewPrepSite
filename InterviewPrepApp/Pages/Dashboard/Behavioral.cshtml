@@ -2,43 +2,45 @@
 @model InterviewPrepApp.Pages.Questions.Dashboard.BehavioralModel
 @{
     ViewData["Title"] = "Behavioral";
-    Layout = "_Layout";
+    Layout = "_DashLayout";
 }
 
 <h1>Behavioral</h1>
-<div class="card">
-    <form method="post" class="add-form">
-        <p>Create a new Behavioral Question</p>
-        <div class="form-group">
-            <label asp-for="@Model.Question.Question">Question</label>
-            <textarea class="form-control" rows="2" asp-for="@Model.Question.Question"></textarea>
-        </div>
-    </form>
-</div>
+@section FormInsides {
+    <p>Create a new Behavioral Question</p>
+    <div class="form-group">
+        <label asp-for="@Model.Question.Question">Question</label>
+        <textarea class="form-control" rows="2" asp-for="@Model.Question.Question"></textarea>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Submit" class="btn btn-dark">
+    </div>
+};
 
+@section TableHead {
+    <tr>
+        <th>
+            @Model.
+        </th>
+        <th>
+            Question
+        </th>
+    </tr>
+}
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Id
-            </th>
-            <th>
-                Question
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.AllQs)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Question)
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+@section TableRows {
+    @foreach (var item in Model.AllQs)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Question)
+    </td>
+    <td>
+        <a asp-action="Delete">Delete</a>
+    </td>
+</tr>
+    }
+}

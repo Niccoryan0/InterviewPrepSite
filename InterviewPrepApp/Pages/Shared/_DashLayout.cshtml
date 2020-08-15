@@ -1,0 +1,26 @@
+﻿@{
+    Layout = "_Layout";
+}
+@section DashTable {
+    <div class="card">
+        <form method="post" class="add-form">
+            @RenderSection("FormInsides", true);
+        </form>
+    </div>
+
+
+    <table class="table">
+        <thead>
+            @RenderSection("TableHead", true);
+
+        </thead>
+        <tbody>
+            @foreach (var item in Model.AllQs)
+            {
+                <tr>
+                    @RenderSection("TableRows", true);
+                </tr>
+            }
+        </tbody>
+    </table>
+}

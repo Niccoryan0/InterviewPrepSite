@@ -20,13 +20,15 @@
                 </div>
                 <input asp-for="@Model.Username" type="text" class="form-control" id="validationCustom02" placeholder="Username" required>
             </div>
-            <div class="row align-items-center remember">
-                <label asp-for="@Model.Admin">
-                    <input asp-for="@Model.Admin">Administrator
-                </label>
+            <div class="form-group">
+                <label asp-for="@Model.Role">Role</label>
+                <select asp-for="@Model.Role" class="form-control">
+                    <option value="Contributor">Contributor</option>
+                    <option value="Admin">Administrator</option>
+                </select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Login" class="btn btn-dark">
+                <input type="submit" value="Submit" class="btn btn-dark">
             </div>
         </form>
     </div>
