@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "_Layout";
+}
+@section FlipCard{
+    <div class="body-container">
+        @RenderBody()
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 card-container">
+                    <div class="card-flip">
+                        <div class="card front">
+                            @RenderSection("Question", true)
+                        </div>
+                        <div class=" card back">
+                            @RenderSection("Answer", false)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form method="post">
+            <button class="btn btn-dark">Get New Question</button>
+        </form>
+    </div>
+}
+
+
+

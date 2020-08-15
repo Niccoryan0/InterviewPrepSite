@@ -1,0 +1,131 @@
+﻿html, body {
+    /*    background-color: #212121;*/
+    text-align: center;
+    height: 100%;
+    color: white;
+}
+
+
+body {
+    background: url(../assets/nature.jpeg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+.all-container {
+    width: 100% !important;
+    min-height: 100%;
+    position: relative;
+}
+
+.body-container {
+    padding-bottom: 150px;
+    margin: 0 30px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+    footer > div {
+        margin: 0 15px;
+    }
+
+
+footer > a {
+    color: white;
+    transition: 0.3s;
+}
+
+    footer > a:hover {
+        color: gray;
+    }
+
+
+.card-container {
+    perspective: 700px;
+    margin: 30px auto;
+}
+
+.card-flip, .card-container {
+    transform-style: preserve-3d;
+    transition: all 0.7s ease;
+}
+
+    .card-flip div {
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+    }
+
+.back {
+    transform: rotateY(-180deg);
+}
+
+.card-container:hover .card-flip {
+    transform: rotateY(180deg);
+}
+
+.card-flip {
+    display: grid;
+    grid-template: 1fr / 1fr;
+    grid-template-areas: "frontAndBack";
+    transform-style: preserve-3d;
+    transition: all 0.7s ease;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 30px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+    .card > form {
+        width: 35%;
+    }
+
+.front {
+    grid-area: frontAndBack;
+}
+
+.back {
+    grid-area: frontAndBack;
+    transform: rotateY(-180deg);
+}
+
+.card-container {
+    display: grid;
+    perspective: 700px;
+}
+
+.body-container > table {
+    background-color: rgba(0, 0, 0, 0.65);
+    color: white;
+}
+
+.dash-link {
+    margin-right: 40px;
+}
+
+h1 {
+    margin: 20px 0;
+}
+
+table {
+    padding: 10px 20px;
+}

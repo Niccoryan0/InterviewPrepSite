@@ -1,0 +1,64 @@
+﻿@page
+@model InterviewPrepApp.Pages.Questions.Dashboard.TechnicalModel
+@{
+    ViewData["Title"] = "Technical";
+    Layout = "_Layout";
+}
+
+<h1>Technical</h1>
+<div class="card">
+    <form method="post">
+        <p>Create a new Technical Question</p>
+        <div class="form-group">
+            <label asp-for="@Model.Question.Question">Question</label>
+            <textarea class="form-control" rows="2" asp-for="@Model.Question.Question"></textarea>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Question.Answer">Answer</label>
+            <textarea  class="form-control" asp-for="@Model.Question.Answer"></textarea>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Question.Category">Category</label>
+            <input asp-for="@Model.Question.Category" type="text" class="form-control" required>
+        </div>
+    </form>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Question
+            </th>
+            <th>
+                Answer
+            </th>
+            <th>
+                Category
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.AllQs)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Question)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Answer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,44 @@
+﻿@page
+@model InterviewPrepApp.Pages.Questions.Dashboard.BehavioralModel
+@{
+    ViewData["Title"] = "Behavioral";
+    Layout = "_Layout";
+}
+
+<h1>Behavioral</h1>
+<div class="card">
+    <form method="post">
+        <p>Create a new Behavioral Question</p>
+        <div class="form-group">
+            <label asp-for="@Model.Question.Question">Question</label>
+            <textarea class="form-control" rows="2" asp-for="@Model.Question.Question"></textarea>
+        </div>
+    </form>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Question
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.AllQs)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Question)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
