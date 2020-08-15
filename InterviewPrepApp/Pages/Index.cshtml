@@ -4,8 +4,34 @@
     ViewData["Title"] = "Home page";
     Layout = "_Layout";
 }
+@section Styles{ 
+    <style>
+        .body-container {
+            padding-bottom: 150px;
+            margin: 0 30px;
+        }
 
-<div class="text-center">
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+            footer > div {
+                margin: 0 15px;
+            }
+    </style>
+}
+
+<div class="text-center home-header">
     <h1 class="display-4">Welcome</h1>
     <h3 class="display-6">Choose an option in the top left to get started</h3>
 </div>
@@ -13,7 +39,7 @@
 @section Footer{
     <footer>
         <a href="https://www.linkedin.com/in/nicholas-j-ryan/" target="_blank"><i class="fab fa-linkedin-in fa-2x"></i></a>
-        <div>Brought to you by Nicco Ryan</div>
+        <div>Brought to you by Nicco Ryan<br />Contact on LinkedIn if you'd like to contribute</div>
         <a href="https://github.com/Niccoryan0" target="_blank"><i class="fab fa-github fa-2x"></i></a>
     </footer>
 }

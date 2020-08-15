@@ -48,6 +48,7 @@ namespace InterviewPrepApp
 
             services.AddTransient<ITechnicalQ, TechnicalQRepository>();
             services.AddTransient<IBehavioralQ, BehavioralQRepository>();
+            services.AddTransient<IWhiteboardQ, WhiteboardQRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

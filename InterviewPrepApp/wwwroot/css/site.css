@@ -22,28 +22,8 @@ body {
 }
 
 .body-container {
-    padding-bottom: 150px;
     margin: 0 30px;
 }
-
-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-    footer > div {
-        margin: 0 15px;
-    }
-
 
 footer > a {
     color: white;
@@ -133,4 +113,16 @@ table {
 .click-flip-explanation{
     font-size: 12px;
     margin: 0 auto;
+}
+
+.home-header{
+    background-color: rgba(0, 0, 0, 0.6);
+    width: fit-content;
+    border-radius: 4px;
+    padding: 10px 25px;
+    margin: 10% auto;
+}
+
+.home-header > h1 {
+    margin: 0 0 20px;
 }

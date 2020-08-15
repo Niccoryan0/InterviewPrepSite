@@ -16,6 +16,7 @@ namespace InterviewPrepApp.Data
 
         public DbSet<TechnicalQ> TechnicalQs { get; set; }
         public DbSet<BehavioralQ> BehavioralQs { get; set; }
+        public DbSet<WhiteboardQ> WhiteboardQs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -317,6 +318,91 @@ namespace InterviewPrepApp.Data
                 {
                     Id = 27,
                     Question = "What are your salary requirements?",
+                }
+            );
+            #endregion
+
+            // TODO: This stuff
+            #region WhiteboardQSeeding
+            builder.Entity<WhiteboardQ>().HasData(
+                new WhiteboardQ 
+                { 
+                    Id = 1,
+                    Question = @"Assuming the following basic  table structure
+Documents(DocID, DocDate)
+Keywords(KeyWordID, KeyWord)
+DocumentKeywords(DocID, KeywordID)
+
+Write a query to return the following:
+Part 1: Documents with a DocDate after 4 / 1 / 1995
+Part 2: Documents that contain the keyword 'Blue'
+Part 3: Documents that contain either the keyword 'Blue' or 'Yellow'
+Part 4: Documents that contain both the keywords 'Blue' and 'Yellow'"
+                },
+                new WhiteboardQ
+                {
+                    Id = 2,
+                    Question = "Write a function to reverse a singly linked list."
+                },
+                new WhiteboardQ
+                {
+                    Id = 3,
+                    Question = "Given a binary tree, find the depth of the binary tree."
+                },
+                new WhiteboardQ
+                {
+                    Id = 4,
+                    Question = "Write a procedure for binary searching an array of integers."
+                },
+                new WhiteboardQ
+                {
+                    Id = 5,
+                    Question = "Write me a function to generate/print/store the first n prime numbers."
+                },
+                new WhiteboardQ
+                {
+                    Id = 6,
+                    Question = "Write a query to get all of the customers in a database, and their phone numbers, for the ones with the last name 'Smith'"
+                },
+                new WhiteboardQ
+                {
+                    Id = 7,
+                    Question = "Given a number n, output the total number of (unique) binary trees that have n nodes."
+                },
+                new WhiteboardQ
+                {
+                    Id = 8,
+                    Question = "Calculate the nth number in the Fibonacci sequence. Try to do this with a storage complexity of O(1)."
+                },
+                new WhiteboardQ
+                {
+                    Id = 9,
+                    Question = "Reverse an array of integers in place."
+                },
+                new WhiteboardQ
+                {
+                    Id = 10,
+                    Question = "Traverse a binary search tree and return a given value n."
+                },
+                new WhiteboardQ
+                {
+                    Id = 11,
+                    Question = "Find a value in a doubly-linked list and move it to the front of the list."
+                },
+                new WhiteboardQ
+                {
+                    Id = 12,
+                    Question = "Write a SQL query yielding the names of customers with at least 2 orders."
+                },
+                new WhiteboardQ
+                {
+                    Id = 13,
+                    Question = "Write algorithms for doing both a depth and breadth first traversal of a binary tree. Discuss the differences in the two."
+                },
+                new WhiteboardQ
+                {
+                    Id = 14,
+                    Question = "Traverse a binary tree without using recursion."
                 }
             );
             #endregion
