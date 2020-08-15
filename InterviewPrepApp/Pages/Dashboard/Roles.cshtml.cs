@@ -40,6 +40,12 @@ namespace InterviewPrepApp.Pages.Dashboard
         {
             var user = await _userManager.FindByNameAsync(Username);
 
+            if(user == null)
+            {
+                ModelState.AddModelError("", "That username could not be found.");
+                return Page();
+            }
+
             if (Admin)
             {
                 await _userManager.AddToRoleAsync(user, "Admin");
@@ -49,7 +55,7 @@ namespace InterviewPrepApp.Pages.Dashboard
                 await _userManager.AddToRoleAsync(user, "Contributor");
             }
 
-            return Page();
+            return RedirectToPage("/Index");
         }
     }
 }
