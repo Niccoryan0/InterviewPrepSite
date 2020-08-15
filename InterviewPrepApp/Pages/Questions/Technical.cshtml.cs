@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using InterviewPrepApp.Models.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace InterviewPrepApp.Pages.Questions
 {
+    [AllowAnonymous]
     public class TechnicalModel : PageModel
     {
         public ITechnicalQ _questions { get; set; }

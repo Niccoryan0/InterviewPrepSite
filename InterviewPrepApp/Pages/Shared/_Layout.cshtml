@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity;
+@using InterviewPrepApp.Models;
+@inject SignInManager<ApplicationUser> SignInManager
+<!DOCTYPE html>
 
 <html>
 
@@ -30,20 +33,44 @@
                         </li>
                     </ul>
                 </div>
+
                 <div class="navbar-collapse collapse w-100 order-3 dual-collapse2 ml-auto dash-link">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dashboard
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a asp-page="/Dashboard/Technical" class="nav-link">Technical</a>
-                                <div class="dropdown-divider"></div>
-                                <a asp-page="/Dashboard/Behavioral" class="nav-link">Behavioral</a>
-                                <div class="dropdown-divider"></div>
-                                <a asp-page="/Dashboard/Whiteboard" class="nav-link">Whiteboard</a>
-                            </div>
-                        </li>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Dashboard
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    @if (User.IsInRole("Contributor") || User.IsInRole("Admin"))
+                                    {
+                                        <form method="get" asp-page="/Dashboard/Technical" class="nav-link"><button class="btn btn-link" type="submit">Technical</button></form>
+                                        <div class="dropdown-divider"></div>
+                                        <form method="get" asp-page="/Dashboard/Behavioral" class="nav-link"><button class="btn btn-link" type="submit">Behavioral</button></form>
+                                        <div class="dropdown-divider"></div>
+                                        <form method="get" asp-page="/Dashboard/Whiteboard" class="nav-link"><button class="btn btn-link" type="submit">Whiteboard</button></form>
+                                        <div class="dropdown-divider"></div>
+                                    }
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <form method="get" asp-page="/Dashboard/Roles" class="nav-link"><button class="btn btn-link" type="submit">Roles</button></form>
+                                        <div class="dropdown-divider"></div>
+                                    }
+                                    <form method="post" asp-page="/Account/Logout" class="nav-link"><button class="btn btn-link" type="submit">Logout</button></form>
+                                </div>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a asp-page="/Account/Login" class="nav-link" role="button">Login</a>
+                            </li>
+
+                            <li>
+                                <a asp-page="/Account/Register" class="nav-link" role="button">Register</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </nav>
@@ -60,5 +87,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
+    @RenderSection("Scripts", false)
 </body>
 </html>

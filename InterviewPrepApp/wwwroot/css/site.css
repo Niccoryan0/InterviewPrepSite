@@ -74,7 +74,7 @@ footer > a {
     transform: rotateY(-180deg);
 }
 
-.card-container:hover .card-flip {
+.flip {
     transform: rotateY(180deg);
 }
 
@@ -95,7 +95,7 @@ footer > a {
     background-color: rgba(0, 0, 0, 0.75);
 }
 
-    .card > form {
+    .add-form {
         width: 35%;
     }
 
@@ -128,4 +128,9 @@ h1 {
 
 table {
     padding: 10px 20px;
+}
+
+.click-flip-explanation{
+    font-size: 12px;
+    margin: 0 auto;
 }

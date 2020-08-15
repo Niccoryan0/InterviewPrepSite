@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using InterviewPrepApp.Data;
+using InterviewPrepApp.Models;
 using InterviewPrepApp.Models.Interface;
 using InterviewPrepApp.Models.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,12 +35,23 @@ namespace InterviewPrepApp
                 options.UseSqlServer(Config.GetConnectionString("DefaultConnection"));
             });
 
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                    .AddEntityFrameworkStores<QuestionsDbContext>()
+                    .AddDefaultTokenProviders();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("NiccoOnly", policy => policy.RequireRole(ApplicationRoles.Nicco));
+                options.AddPolicy("Admins", policy => policy.RequireRole(ApplicationRoles.Nicco, ApplicationRoles.Admin));
+                options.AddPolicy("Contributors", policy => policy.RequireRole(ApplicationRoles.Nicco, ApplicationRoles.Admin, ApplicationRoles.Contributor));
+            });
+
             services.AddTransient<ITechnicalQ, TechnicalQRepository>();
             services.AddTransient<IBehavioralQ, BehavioralQRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -51,12 +64,16 @@ namespace InterviewPrepApp
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            app.UseRouting();
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
-            //app.UseAuthorization();
+            var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+
+            RoleInitializer.SeedRoles(serviceProvider, userManager, Config);
 
             app.UseEndpoints(endpoints =>
             {

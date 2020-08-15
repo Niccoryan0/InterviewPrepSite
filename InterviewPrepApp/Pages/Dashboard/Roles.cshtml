@@ -1,0 +1,33 @@
+﻿@page
+@model InterviewPrepApp.Pages.Dashboard.RolesModel
+@{
+    ViewData["Title"] = "Roles";
+    Layout = "_Layout";
+}
+@section Styles {
+    <link href="~/css/Account.css" rel="stylesheet" type="text/css" />
+}
+
+<h1>Roles</h1>
+
+<div class="container">
+    <div class="card">
+        <form method="post">
+            <div asp-validation-summary="All"></div>
+            <div class="input-group form-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                </div>
+                <input asp-for="@Model.Username" type="text" class="form-control" id="validationCustom02" placeholder="Username" required>
+            </div>
+            <div class="row align-items-center remember">
+                <label asp-for="@Model.Admin">
+                    <input asp-for="@Model.Admin">Administrator
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-dark">
+            </div>
+        </form>
+    </div>
+</div>

@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using InterviewPrepApp.Models;
 using InterviewPrepApp.Models.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace InterviewPrepApp.Pages.Questions.Dashboard
 {
+    [Authorize(Policy = "Contributors")]
     public class TechnicalModel : PageModel
     {
         public ITechnicalQ _questions { get; set; }

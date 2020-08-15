@@ -1,4 +1,5 @@
 ﻿using InterviewPrepApp.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace InterviewPrepApp.Data
 {
-    public class QuestionsDbContext : DbContext
+    public class QuestionsDbContext : IdentityDbContext<ApplicationUser>
     {
         public QuestionsDbContext(DbContextOptions<QuestionsDbContext> options) : base(options)
         {
