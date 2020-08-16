@@ -8,16 +8,16 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace InterviewPrepApp.Pages.Dashboard.Behavioral
+namespace InterviewPrepApp.Pages.Dashboard.Whiteboard
 {
     [Authorize(Policy = "NiccoOnly")]
     public class DeleteModel : PageModel
     {
-        public IBehavioralQ _questions { get; set; }
+        public IWhiteboardQ _questions { get; set; }
         [BindProperty]
         public DeleteViewModel Question { get; set; }
 
-        public DeleteModel(IBehavioralQ questions)
+        public DeleteModel(IWhiteboardQ questions)
         {
             _questions = questions;
             Question = new DeleteViewModel();
@@ -25,7 +25,7 @@ namespace InterviewPrepApp.Pages.Dashboard.Behavioral
 
         public async Task OnGet(int id)
         {
-            var question = await _questions.GetBehavioralQ(id);
+            var question = await _questions.GetWhiteboardQ(id);
             Question.Id = question.Id;
             Question.Question = question.Question;
         }
@@ -33,7 +33,7 @@ namespace InterviewPrepApp.Pages.Dashboard.Behavioral
         public async Task<IActionResult> OnPost()
         {
             await _questions.Delete(Question.Id);
-            return RedirectToPage("/Dashboard/Behavioral");
+            return RedirectToPage("/Dashboard/Whiteboard");
         }
 
 

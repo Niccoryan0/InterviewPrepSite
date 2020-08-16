@@ -7,7 +7,6 @@ using InterviewPrepApp.Pages.Questions.Dashboard;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using static InterviewPrepApp.Pages.Questions.Dashboard.TechnicalModel;
 
 namespace InterviewPrepApp.Pages.Dashboard.Technical
 {

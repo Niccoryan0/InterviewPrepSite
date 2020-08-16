@@ -41,6 +41,15 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Question)
                 </td>
+                @if (User.IsInRole("Nicco"))
+                {
+                    <td>
+                        <a asp-page="/Dashboard/Whiteboard/Update" asp-route-id="@item.Id">Update</a>
+                    </td>
+                    <td>
+                        <a asp-page="/Dashboard/Whiteboard/Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                }
             </tr>
         }
     </tbody>

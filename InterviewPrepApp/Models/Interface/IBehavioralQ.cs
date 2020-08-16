@@ -27,5 +27,18 @@ namespace InterviewPrepApp.Models.Interface
         /// <returns>Task of completion for question creation</returns>
         Task Create(BehavioralQ question);
 
+        /// <summary>
+        /// Delete a behavioral question
+        /// </summary>
+        /// <param name="question">Question to be deleted</param>
+        /// <returns>Task of completion</returns>
+        Task Delete(int id);
+
+        /// <summary>
+        /// Delete a behavioral question
+        /// </summary>
+        /// <param name="question">Question to be deleted</param>
+        /// <returns>Task of completion</returns>
+        Task Update(BehavioralQ question);
     }
 }

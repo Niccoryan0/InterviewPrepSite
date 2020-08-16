@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using InterviewPrepApp.Models;
 using InterviewPrepApp.Models.Interface;
-using InterviewPrepApp.Pages.Questions.Dashboard;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -11,16 +11,16 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace InterviewPrepApp.Pages.Dashboard.Behavioral
 {
     [Authorize(Policy = "NiccoOnly")]
-    public class DeleteModel : PageModel
+    public class UpdateModel : PageModel
     {
         public IBehavioralQ _questions { get; set; }
         [BindProperty]
-        public DeleteViewModel Question { get; set; }
+        public UpdateViewModel Question { get; set; }
 
-        public DeleteModel(IBehavioralQ questions)
+        public UpdateModel(IBehavioralQ questions)
         {
             _questions = questions;
-            Question = new DeleteViewModel();
+            Question = new UpdateViewModel();
         }
 
         public async Task OnGet(int id)
@@ -30,17 +30,23 @@ namespace InterviewPrepApp.Pages.Dashboard.Behavioral
             Question.Question = question.Question;
         }
 
-        public async Task<IActionResult> OnPost()
+        public async Task<IActionResult> OnPost(int id)
         {
-            await _questions.Delete(Question.Id);
+            BehavioralQ update = new BehavioralQ
+            {
+                Id = id,
+                Question = Question.Question
+
+            };
+            await _questions.Update(update);
             return RedirectToPage("/Dashboard/Behavioral");
         }
 
+        public class UpdateViewModel
+        {
+            public string Question { get; set; }
+            public int Id { get; set; }
+        }
 
-    }
-    public class DeleteViewModel
-    {
-        public string Question { get; set; }
-        public int Id { get; set; }
     }
 }
