@@ -7,20 +7,16 @@
 @section Styles{ 
     <style>
         .body-container {
-            padding-bottom: 150px;
             margin: 0 30px;
         }
 
         footer {
-            position: absolute;
-            bottom: 0;
             width: 100%;
             background-color: rgba(0, 0, 0, 0.5);
             color: white;
             text-align: center;
             padding: 20px 0;
             display: flex;
-            flex-direction: row;
             justify-content: center;
             align-items: center;
         }
@@ -35,11 +31,12 @@
     <h1 class="display-4">Welcome</h1>
 </div>
 
-<div class="text-center card home-header">
+<div class="text-center card home-body">
     <h3 class="display-6">Choose a type of question below</h3>
     <a asp-page="/Questions/Technical" class="btn btn-dark">Technical</a>
     <a asp-page="/Questions/Behavioral" class="btn btn-dark">Behavioral</a>
     <a asp-page="/Questions/Whiteboard" class="btn btn-dark">Whiteboard</a>
+    <a asp-page="/Questions/Traversals" class="btn btn-dark">Traversals</a>
     <h3 class="display-8">These are also available in the top left</h3>
 </div>
 

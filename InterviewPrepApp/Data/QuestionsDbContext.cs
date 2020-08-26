@@ -17,6 +17,7 @@ namespace InterviewPrepApp.Data
         public DbSet<TechnicalQ> TechnicalQs { get; set; }
         public DbSet<BehavioralQ> BehavioralQs { get; set; }
         public DbSet<WhiteboardQ> WhiteboardQs { get; set; }
+        public DbSet<TraversalQ> Traversals { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -405,6 +406,93 @@ Part 4: Documents that contain both the keywords 'Blue' and 'Yellow'"
                 }
             );
             #endregion
+
+            builder.Entity<TraversalQ>().HasData(
+                new TechnicalQ
+                {
+                    Id = 1,
+                    Question = "Traverse a linked list, return max value: Iteratively",
+                    Category = "Linked Lists"
+                }, 
+                new TechnicalQ
+                {
+                    Id = 2,
+                    Question = "Traverse a linked list, return max value: Recursively",
+                    Category = "Linked Lists"
+                }, 
+                new TechnicalQ
+                {
+                    Id = 3,
+                    Question = "Traverse a binary tree, find a value n: Iteratively",
+                    Category = "Trees"
+                }, 
+                new TechnicalQ
+                {
+                    Id = 4,
+                    Question = "Traverse a binary tree, return the minimum value: Recursively",
+                    Category = "Trees"
+                },
+                new TechnicalQ
+                {
+                    Id = 5,
+                    Question = "Traverse a binary tree and return all duplicates: Breadth-first",
+                    Category = "Trees"
+                },
+                new TechnicalQ
+                {
+                    Id = 6,
+                    Question = "Traverse a binary search tree to find a given value n",
+                    Category = "Trees"
+                }, 
+                new TechnicalQ
+                {
+                    Id = 7,
+                    Question = "Reverse a given stack: Iteratively",
+                    Category = "Stacks and Queues"
+                }, 
+                new TechnicalQ
+                {
+                    Id = 8,
+                    Question = "Traverse a stack for a given value n: Iteratively",
+                    Category = "Stacks and Queues"
+                }, 
+                new TechnicalQ
+                {
+                    Id = 9,
+                    Question = "Find the maximum value in an array: Iteratively",
+                    Category = "Arrays"
+                }, 
+                new TechnicalQ
+                {
+                    Id = 10,
+                    Question = "Return all duplicates in a Binary Tree: Iteratively.",
+                    Category = "Trees"
+                }, 
+                new TechnicalQ
+                {
+                    Id = 11,
+                    Question = "Return the maximum value in a Binary Tree: Recursively.",
+                    Category = "Trees"
+                }, 
+                new TechnicalQ
+                {
+                    Id = 12,
+                    Question = "Remove all duplicates from a Linked List: Recursively.",
+                    Category = "Linked Lists"
+                }, 
+                new TechnicalQ
+                {
+                    Id = 13,
+                    Question = "Sort all values in a Queue: Iteratively.",
+                    Category = "Stacks and Queues"
+                }, 
+                new TechnicalQ
+                {
+                    Id = 14,
+                    Question = "Sort all values in a Stack: Recursively.",
+                    Category = "Stacks and Queues"
+                }
+            );
         }
     }
 }

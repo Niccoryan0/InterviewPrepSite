@@ -1,17 +1,22 @@
 ﻿@page
-@model InterviewPrepApp.Pages.Dashboard.WhiteboardModel
+@model InterviewPrepApp.Pages.Dashboard.TraversalsModel
 @{
-    ViewData["Title"] = "Whiteboard";
+    ViewData["Title"] = "Traversals";
     Layout = "_Layout";
 }
 
-<h1>Whiteboard</h1>
+<h1>Traversals</h1>
+
 <div class="card">
     <form method="post" class="add-form">
-        <p>Create a new Whiteboard Question</p>
+        <p>Create a new Technical Question</p>
         <div class="form-group">
             <label asp-for="@Model.Question.Question">Question</label>
             <textarea class="form-control" rows="2" asp-for="@Model.Question.Question"></textarea>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Question.Category">Category</label>
+            <input asp-for="@Model.Question.Category" type="text" class="form-control" required>
         </div>
         <div class="form-group">
             <input type="submit" value="Submit" class="btn btn-dark">
@@ -29,6 +34,9 @@
             <th>
                 Question
             </th>
+            <th>
+                Category
+            </th>
             <th></th>
             <th></th>
         </tr>
@@ -43,13 +51,16 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Question)
                 </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
                 @if (User.IsInRole("Nicco"))
                 {
                     <td>
-                        <a asp-page="/Dashboard/Whiteboard/Update" asp-route-id="@item.Id">Update</a>
+                        <a asp-page="/Dashboard/Traversal/Update" asp-route-id="@item.Id">Update</a>
                     </td>
                     <td>
-                        <a asp-page="/Dashboard/Whiteboard/Delete" asp-route-id="@item.Id">Delete</a>
+                        <a asp-page="/Dashboard/Traversal/Delete" asp-route-id="@item.Id">Delete</a>
                     </td>
                 }
             </tr>

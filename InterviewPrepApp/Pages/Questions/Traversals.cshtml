@@ -1,0 +1,14 @@
+﻿@page
+@model InterviewPrepApp.Pages.Questions.TraversalsModel
+@{
+    ViewData["Title"] = "Traversals";
+    Layout = "_QuestionLayout";
+}
+
+<h1>Traversals</h1>
+
+@section Question {
+    <p class="font-weight-bold blue-text">@Model.Question.Question</p>
+    <p>Category: @Model.Question.Category</p>
+}
+

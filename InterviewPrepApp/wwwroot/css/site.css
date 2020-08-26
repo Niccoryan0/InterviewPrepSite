@@ -115,18 +115,31 @@ table {
     margin: 0 auto;
 }
 
-.home-header{
+.home-header, .home-body{
     background-color: rgba(0, 0, 0, 0.6);
-    width: fit-content;
+    min-width:250px;
     border-radius: 4px;
     padding: 10px 25px;
     margin: 4% auto;
 }
 
-.home-header > h3:first-child {
+.home-header {
+    width: 250px;
+}
+
+.home-body {
+    min-width: 250px;
+    max-width: 525px;
+}
+
+.home-body > h3:first-child {
     margin-bottom: 18px;
 }
 
-.home-header > a {
+.home-body > a {
     margin-bottom: 18px;
+}
+
+.new-question{
+    margin-bottom: 30px;
 }
