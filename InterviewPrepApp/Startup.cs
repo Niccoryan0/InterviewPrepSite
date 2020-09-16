@@ -48,7 +48,6 @@ namespace InterviewPrepApp
 
             services.Configure<IdentityOptions>(options =>
             {
-                // Default Password settings.
                 options.Password.RequireNonAlphanumeric = true;
                 options.Password.RequireDigit = false;
                 options.Password.RequireLowercase = false;

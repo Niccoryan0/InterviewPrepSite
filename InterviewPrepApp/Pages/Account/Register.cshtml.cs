@@ -45,8 +45,13 @@ namespace InterviewPrepApp.Pages.Account
 
                     return RedirectToPage("/Index");
                 }
-                ModelState.AddModelError("", "Invalid username or password.");
-                ModelState.AddModelError("", "Password must be 8 characters long and contain a non-alphanumeric character.");
+                else
+                {
+                    foreach (var error in registered.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
             }
             else
             {
