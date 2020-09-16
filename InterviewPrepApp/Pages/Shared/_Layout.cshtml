@@ -6,6 +6,13 @@
 <html>
 
 <head>
+    <title>Interview Prep</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="~/favicons/favicon.ico">
+    <link rel="apple-touch-icon" href="~/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="~/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="~/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="stylesheet" type="text/css" href="~/css/reset.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="~/css/site.css" />
@@ -30,6 +37,9 @@
                         </li>
                         <li>
                             <a asp-page="/Questions/Whiteboard" class="nav-link" role="button">Whiteboard</a>
+                        </li>     
+                        <li>
+                            <a asp-page="/Questions/Traversals" class="nav-link" role="button">Traversals</a>
                         </li>
                     </ul>
                 </div>
@@ -45,20 +55,25 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     @if (User.IsInRole("Contributor") || User.IsInRole("Admin"))
                                     {
-                                        <form method="get" asp-page="/Dashboard/Technical" class="nav-link"><button class="btn btn-link" type="submit">Technical</button></form>
-                                        <div class="dropdown-divider"></div>
-                                        <form method="get" asp-page="/Dashboard/Behavioral" class="nav-link"><button class="btn btn-link" type="submit">Behavioral</button></form>
-                                        <div class="dropdown-divider"></div>
-                                        <form method="get" asp-page="/Dashboard/Whiteboard" class="nav-link"><button class="btn btn-link" type="submit">Whiteboard</button></form>
-                                        <div class="dropdown-divider"></div>
+                                    <form method="get" asp-page="/Dashboard/Technical" class="nav-link"><button class="btn btn-link" type="submit">Technical</button></form>
+                                    <div class="dropdown-divider"></div>
+                                    <form method="get" asp-page="/Dashboard/Behavioral" class="nav-link"><button class="btn btn-link" type="submit">Behavioral</button></form>
+                                    <div class="dropdown-divider"></div>
+                                    <form method="get" asp-page="/Dashboard/Whiteboard" class="nav-link"><button class="btn btn-link" type="submit">Whiteboard</button></form>
+                                    <div class="dropdown-divider"></div>
+                                    <form method="get" asp-page="/Dashboard/Traversals" class="nav-link"><button class="btn btn-link" type="submit">Traversals</button></form>
+                                    <div class="dropdown-divider"></div>
                                     }
                                     @if (User.IsInRole("Admin"))
                                     {
-                                        <form method="get" asp-page="/Dashboard/Roles" class="nav-link"><button class="btn btn-link" type="submit">Roles</button></form>
-                                        <div class="dropdown-divider"></div>
+                                    <form method="get" asp-page="/Dashboard/Roles" class="nav-link"><button class="btn btn-link" type="submit">Roles</button></form>
+                                    <div class="dropdown-divider"></div>
                                     }
                                     <form method="post" asp-page="/Account/Logout" class="nav-link"><button class="btn btn-link" type="submit">Logout</button></form>
                                 </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" >@User.Identity.Name</a>
                             </li>
                         }
                         else
@@ -79,6 +94,7 @@
         <div class="body-container">
             @RenderBody()
             @RenderSection("FlipCard", false)
+            @RenderSection("Dashtable", false)
         </div>
     </div>
 
@@ -87,6 +103,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
-    @RenderSection("Scripts", false)
+    <script src="~/scripts/main.js"></script>
 </body>
 </html>

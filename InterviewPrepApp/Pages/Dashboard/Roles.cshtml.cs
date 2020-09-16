@@ -24,10 +24,10 @@ namespace InterviewPrepApp.Pages.Dashboard
 
         [BindProperty]
         [Required]
-        public string Username { get; set; }        
+        public string Username { get; set; }
         [BindProperty]
         [Required]
-        public bool Admin { get; set; }
+        public string Role { get; set; }
 
 
 
@@ -40,16 +40,14 @@ namespace InterviewPrepApp.Pages.Dashboard
         {
             var user = await _userManager.FindByNameAsync(Username);
 
-            if (Admin)
+            if (user == null)
             {
-                await _userManager.AddToRoleAsync(user, "Admin");
-            } 
-            else
-            {
-                await _userManager.AddToRoleAsync(user, "Contributor");
+                ModelState.AddModelError("", "That username could not be found.");
+                return Page();
             }
+            await _userManager.AddToRoleAsync(user, Role);
 
-            return Page();
+            return RedirectToPage("/Index");
         }
     }
 }

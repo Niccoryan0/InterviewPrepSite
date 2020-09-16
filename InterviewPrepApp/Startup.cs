@@ -46,8 +46,20 @@ namespace InterviewPrepApp
                 options.AddPolicy("Contributors", policy => policy.RequireRole(ApplicationRoles.Nicco, ApplicationRoles.Admin, ApplicationRoles.Contributor));
             });
 
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 8;
+                options.Password.RequiredUniqueChars = 2;
+            });
+
             services.AddTransient<ITechnicalQ, TechnicalQRepository>();
             services.AddTransient<IBehavioralQ, BehavioralQRepository>();
+            services.AddTransient<IWhiteboardQ, WhiteboardQRepository>();
+            services.AddTransient<ITraversal, TraversalRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

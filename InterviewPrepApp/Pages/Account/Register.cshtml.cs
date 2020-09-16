@@ -45,7 +45,13 @@ namespace InterviewPrepApp.Pages.Account
 
                     return RedirectToPage("/Index");
                 }
-                ModelState.AddModelError("", "Invalid Registration. Username may already be in use.");
+                else
+                {
+                    foreach (var error in registered.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
             }
             else
             {

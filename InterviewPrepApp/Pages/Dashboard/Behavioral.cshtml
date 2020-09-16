@@ -2,43 +2,53 @@
 @model InterviewPrepApp.Pages.Questions.Dashboard.BehavioralModel
 @{
     ViewData["Title"] = "Behavioral";
-    Layout = "_Layout";
+    Layout = "_DashLayout";
 }
 
 <h1>Behavioral</h1>
-<div class="card">
-    <form method="post" class="add-form">
-        <p>Create a new Behavioral Question</p>
-        <div class="form-group">
-            <label asp-for="@Model.Question.Question">Question</label>
-            <textarea class="form-control" rows="2" asp-for="@Model.Question.Question"></textarea>
-        </div>
-    </form>
-</div>
+@section FormInsides {
+    <p>Create a new Behavioral Question</p>
+    <div class="form-group">
+        <label asp-for="@Model.Question.Question">Question</label>
+        <textarea class="form-control" rows="2" asp-for="@Model.Question.Question"></textarea>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Submit" class="btn btn-dark">
+    </div>
+}
 
+@section TableHead {
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Question
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+}
 
-<table class="table">
-    <thead>
+@section TableRows {
+    @foreach (var item in Model.AllQs)
+    {
         <tr>
-            <th>
-                Id
-            </th>
-            <th>
-                Question
-            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Question)
+            </td>
+            @if (User.IsInRole("Nicco"))
+            {
+                <td>
+                    <a asp-page="/Dashboard/Behavioral/Update" asp-route-id="@item.Id">Update</a>
+                </td>
+                <td>
+                    <a asp-page="/Dashboard/Behavioral/Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            }
         </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.AllQs)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Question)
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+    }
+}

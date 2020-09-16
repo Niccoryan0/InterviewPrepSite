@@ -16,6 +16,8 @@ namespace InterviewPrepApp.Data
 
         public DbSet<TechnicalQ> TechnicalQs { get; set; }
         public DbSet<BehavioralQ> BehavioralQs { get; set; }
+        public DbSet<WhiteboardQ> WhiteboardQs { get; set; }
+        public DbSet<TraversalQ> Traversals { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -160,7 +162,7 @@ namespace InterviewPrepApp.Data
                 new TechnicalQ
                 {
                     Id = 20,
-                    Question = "What is the difference between an abstract method and an interface?",
+                    Question = "What is the difference between an abstract class and an interface?",
                     Answer = "An abstract class allows you to create functionality that subclasses can implement or override. An interface only allows you to define functionality, not implement it. And whereas a class can extend only one abstract class, it can take advantage of multiple interfaces. ",
                     Category = "General"
                 },
@@ -320,6 +322,177 @@ namespace InterviewPrepApp.Data
                 }
             );
             #endregion
+
+            #region WhiteboardQSeeding
+            builder.Entity<WhiteboardQ>().HasData(
+                new WhiteboardQ 
+                { 
+                    Id = 1,
+                    Question = @"Assuming the following basic  table structure
+Documents(DocID, DocDate)
+Keywords(KeyWordID, KeyWord)
+DocumentKeywords(DocID, KeywordID)
+
+Write a query to return the following:
+Part 1: Documents with a DocDate after 4 / 1 / 1995
+Part 2: Documents that contain the keyword 'Blue'
+Part 3: Documents that contain either the keyword 'Blue' or 'Yellow'
+Part 4: Documents that contain both the keywords 'Blue' and 'Yellow'"
+                },
+                new WhiteboardQ
+                {
+                    Id = 2,
+                    Question = "Write a function to reverse a singly linked list."
+                },
+                new WhiteboardQ
+                {
+                    Id = 3,
+                    Question = "Given a binary tree, find the depth of the binary tree."
+                },
+                new WhiteboardQ
+                {
+                    Id = 4,
+                    Question = "Write a procedure for binary searching an array of integers."
+                },
+                new WhiteboardQ
+                {
+                    Id = 5,
+                    Question = "Write me a function to generate/print/store the first n prime numbers."
+                },
+                new WhiteboardQ
+                {
+                    Id = 6,
+                    Question = "Write a query to get all of the customers in a database, and their phone numbers, for the ones with the last name 'Smith'"
+                },
+                new WhiteboardQ
+                {
+                    Id = 7,
+                    Question = "Given a number n, output the total number of (unique) binary trees that have n nodes."
+                },
+                new WhiteboardQ
+                {
+                    Id = 8,
+                    Question = "Calculate the nth number in the Fibonacci sequence. Try to do this with a storage complexity of O(1)."
+                },
+                new WhiteboardQ
+                {
+                    Id = 9,
+                    Question = "Reverse an array of integers in place."
+                },
+                new WhiteboardQ
+                {
+                    Id = 10,
+                    Question = "Traverse a binary search tree and return a given value n."
+                },
+                new WhiteboardQ
+                {
+                    Id = 11,
+                    Question = "Find a value in a doubly-linked list and move it to the front of the list."
+                },
+                new WhiteboardQ
+                {
+                    Id = 12,
+                    Question = "Write a SQL query yielding the names of customers with at least 2 orders."
+                },
+                new WhiteboardQ
+                {
+                    Id = 13,
+                    Question = "Write algorithms for doing both a depth and breadth first traversal of a binary tree. Discuss the differences in the two."
+                },
+                new WhiteboardQ
+                {
+                    Id = 14,
+                    Question = "Traverse a binary tree without using recursion."
+                }
+            );
+            #endregion
+
+            builder.Entity<TraversalQ>().HasData(
+                new TechnicalQ
+                {
+                    Id = 1,
+                    Question = "Traverse a linked list, return max value: Iteratively",
+                    Category = "Linked Lists"
+                }, 
+                new TechnicalQ
+                {
+                    Id = 2,
+                    Question = "Traverse a linked list, return max value: Recursively",
+                    Category = "Linked Lists"
+                }, 
+                new TechnicalQ
+                {
+                    Id = 3,
+                    Question = "Traverse a binary tree, find a value n: Iteratively",
+                    Category = "Trees"
+                }, 
+                new TechnicalQ
+                {
+                    Id = 4,
+                    Question = "Traverse a binary tree, return the minimum value: Recursively",
+                    Category = "Trees"
+                },
+                new TechnicalQ
+                {
+                    Id = 5,
+                    Question = "Traverse a binary tree and return all duplicates: Breadth-first",
+                    Category = "Trees"
+                },
+                new TechnicalQ
+                {
+                    Id = 6,
+                    Question = "Traverse a binary search tree to find a given value n",
+                    Category = "Trees"
+                }, 
+                new TechnicalQ
+                {
+                    Id = 7,
+                    Question = "Reverse a given stack: Iteratively",
+                    Category = "Stacks and Queues"
+                }, 
+                new TechnicalQ
+                {
+                    Id = 8,
+                    Question = "Traverse a stack for a given value n: Iteratively",
+                    Category = "Stacks and Queues"
+                }, 
+                new TechnicalQ
+                {
+                    Id = 9,
+                    Question = "Find the maximum value in an array: Iteratively",
+                    Category = "Arrays"
+                }, 
+                new TechnicalQ
+                {
+                    Id = 10,
+                    Question = "Return all duplicates in a Binary Tree: Iteratively.",
+                    Category = "Trees"
+                }, 
+                new TechnicalQ
+                {
+                    Id = 11,
+                    Question = "Return the maximum value in a Binary Tree: Recursively.",
+                    Category = "Trees"
+                }, 
+                new TechnicalQ
+                {
+                    Id = 12,
+                    Question = "Remove all duplicates from a Linked List: Recursively.",
+                    Category = "Linked Lists"
+                }, 
+                new TechnicalQ
+                {
+                    Id = 13,
+                    Question = "Sort all values in a Queue: Iteratively.",
+                    Category = "Stacks and Queues"
+                }, 
+                new TechnicalQ
+                {
+                    Id = 14,
+                    Question = "Sort all values in a Stack: Recursively.",
+                    Category = "Stacks and Queues"
+                }
+            );
         }
     }
 }

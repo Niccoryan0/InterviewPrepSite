@@ -36,6 +36,7 @@ namespace InterviewPrepApp.Pages.Questions.Dashboard
                 Question = Question.Question
             };
             await _questions.Create(question);
+            AllQs = await _questions.GetBehavioralQs();
             return Page();
         }
 
