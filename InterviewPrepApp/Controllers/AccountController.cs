@@ -30,6 +30,7 @@ namespace InterviewPrepApp.Controllers
             _config = configuration;
         }
 
+        [AllowAnonymous]
         [HttpPost("Register")]
         public async Task<IActionResult> Register(AccountDTO register)
         {
@@ -52,7 +53,7 @@ namespace InterviewPrepApp.Controllers
                 });
             }
 
-            return BadRequest("Invalid registration");
+            return BadRequest(result.Errors);
         }
 
         [AllowAnonymous]
