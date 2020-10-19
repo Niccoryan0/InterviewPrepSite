@@ -7,37 +7,33 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using InterviewPrepApp.Data;
 using InterviewPrepApp.Models;
+using InterviewPrepApp.Models.Interface;
 
 namespace InterviewPrepApp.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/behavioral")]
     [ApiController]
     public class BehavioralQsController : ControllerBase
     {
-        private readonly QuestionsDbContext _context;
+        private IBehavioralQ _questions { get; set; }
 
-        public BehavioralQsController(QuestionsDbContext context)
+        public BehavioralQsController(IBehavioralQ question)
         {
-            _context = context;
+            _questions = question;
         }
 
         // GET: api/BehavioralQs
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BehavioralQ>>> GetBehavioralQs()
         {
-            return await _context.BehavioralQs.ToListAsync();
+            return await _questions.GetBehavioralQs();
         }
 
         // GET: api/BehavioralQs/5
         [HttpGet("{id}")]
         public async Task<ActionResult<BehavioralQ>> GetBehavioralQ(int id)
         {
-            var behavioralQ = await _context.BehavioralQs.FindAsync(id);
-
-            if (behavioralQ == null)
-            {
-                return NotFound();
-            }
+            var behavioralQ = await _questions.GetBehavioralQ(id);
 
             return behavioralQ;
         }
@@ -53,23 +49,7 @@ namespace InterviewPrepApp.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(behavioralQ).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!BehavioralQExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _questions.Update(behavioralQ);
 
             return NoContent();
         }
@@ -80,31 +60,16 @@ namespace InterviewPrepApp.Controllers
         [HttpPost]
         public async Task<ActionResult<BehavioralQ>> PostBehavioralQ(BehavioralQ behavioralQ)
         {
-            _context.BehavioralQs.Add(behavioralQ);
-            await _context.SaveChangesAsync();
+            await _questions.Create(behavioralQ);
 
             return CreatedAtAction("GetBehavioralQ", new { id = behavioralQ.Id }, behavioralQ);
         }
 
         // DELETE: api/BehavioralQs/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<BehavioralQ>> DeleteBehavioralQ(int id)
+        public async Task DeleteBehavioralQ(int id)
         {
-            var behavioralQ = await _context.BehavioralQs.FindAsync(id);
-            if (behavioralQ == null)
-            {
-                return NotFound();
-            }
-
-            _context.BehavioralQs.Remove(behavioralQ);
-            await _context.SaveChangesAsync();
-
-            return behavioralQ;
-        }
-
-        private bool BehavioralQExists(int id)
-        {
-            return _context.BehavioralQs.Any(e => e.Id == id);
+            await _questions.Delete(id);
         }
     }
 }
