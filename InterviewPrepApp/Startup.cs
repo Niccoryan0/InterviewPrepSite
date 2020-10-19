@@ -30,6 +30,7 @@ namespace InterviewPrepApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddMvc();
             services.AddDbContext<QuestionsDbContext>(options =>
             {
                 options.UseSqlServer(Config.GetConnectionString("DefaultConnection"));
@@ -90,6 +91,7 @@ namespace InterviewPrepApp
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
