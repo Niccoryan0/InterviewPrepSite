@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using InterviewPrepApp.Data;
 using InterviewPrepApp.Models;
 using InterviewPrepApp.Models.Interface;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InterviewPrepApp.Controllers
 {
@@ -24,6 +25,7 @@ namespace InterviewPrepApp.Controllers
 
         // GET: api/WhiteboardQs
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<WhiteboardQ>>> GetWhiteboardQs()
         {
             return await _questions.GetWhiteboardQs();
@@ -31,6 +33,7 @@ namespace InterviewPrepApp.Controllers
 
         // GET: api/WhiteboardQs/5
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<WhiteboardQ>> GetWhiteboardQ(int id)
         {
             var whiteboardQ = await _questions.GetWhiteboardQ(id);

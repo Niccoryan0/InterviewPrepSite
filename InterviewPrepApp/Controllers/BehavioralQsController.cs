@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using InterviewPrepApp.Data;
 using InterviewPrepApp.Models;
 using InterviewPrepApp.Models.Interface;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InterviewPrepApp.Controllers
 {
@@ -24,6 +25,7 @@ namespace InterviewPrepApp.Controllers
 
         // GET: api/BehavioralQs
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<BehavioralQ>>> GetBehavioralQs()
         {
             return await _questions.GetBehavioralQs();
@@ -31,6 +33,7 @@ namespace InterviewPrepApp.Controllers
 
         // GET: api/BehavioralQs/5
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<BehavioralQ>> GetBehavioralQ(int id)
         {
             var behavioralQ = await _questions.GetBehavioralQ(id);

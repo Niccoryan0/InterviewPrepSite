@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using InterviewPrepApp.Data;
 using InterviewPrepApp.Models;
 using InterviewPrepApp.Models.Interface;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InterviewPrepApp.Controllers
 {
@@ -24,6 +25,7 @@ namespace InterviewPrepApp.Controllers
 
         // GET: api/TraversalQs
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<TraversalQ>>> GetTraversalQs()
         {
             return await _questions.GetTraversals();
@@ -31,6 +33,7 @@ namespace InterviewPrepApp.Controllers
 
         // GET: api/TraversalQs/5
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<TraversalQ>> GetTraversalQ(int id)
         {
             var traversalQ = await _questions.GetTraversal(id);
