@@ -14,7 +14,7 @@
                         <div class="card front">
                             @RenderSection("Question", true)
                         </div>
-                        <div class=" card back">
+                        <div class="card back">
                             @RenderSection("Answer", false)
                         </div>
                     </div>
@@ -22,4 +22,8 @@
             </div>
         </div>
     </div>
+}
+
+@section Script{
+    @RenderSection("Script", false)
 }
