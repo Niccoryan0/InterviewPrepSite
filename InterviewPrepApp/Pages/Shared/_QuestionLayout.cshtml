@@ -4,6 +4,9 @@
 @section FlipCard{
     <div class="body-container">
         @RenderBody()
+        <form method="post" class="new-question">
+            <button class="btn btn-dark">Get New Question</button>
+        </form>
         <div class="container">
             <div class="row">
                 <div class="col-md-4 card-container">
@@ -11,17 +14,16 @@
                         <div class="card front">
                             @RenderSection("Question", true)
                         </div>
-                        <div class=" card back">
+                        <div class="card back">
                             @RenderSection("Answer", false)
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <form method="post">
-            <button class="btn btn-dark">Get New Question</button>
-        </form>
     </div>
 }
 
-
+@section Script{
+    @RenderSection("Script", false)
+}

@@ -1,0 +1,69 @@
+﻿@page
+@model InterviewPrepApp.Pages.Dashboard.TraversalsModel
+@{
+    ViewData["Title"] = "Traversals";
+    Layout = "_Layout";
+}
+
+<h1>Traversals</h1>
+
+<div class="card">
+    <form method="post" class="add-form">
+        <p>Create a new Technical Question</p>
+        <div class="form-group">
+            <label asp-for="@Model.Question.Question">Question</label>
+            <textarea class="form-control" rows="2" asp-for="@Model.Question.Question"></textarea>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Question.Category">Category</label>
+            <input asp-for="@Model.Question.Category" type="text" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-dark">
+        </div>
+    </form>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Question
+            </th>
+            <th>
+                Category
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.AllQs)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Question)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                @if (User.IsInRole("Nicco"))
+                {
+                    <td>
+                        <a asp-page="/Dashboard/Traversal/Update" asp-route-id="@item.Id">Update</a>
+                    </td>
+                    <td>
+                        <a asp-page="/Dashboard/Traversal/Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

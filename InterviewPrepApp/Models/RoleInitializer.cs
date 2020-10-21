@@ -49,8 +49,7 @@ namespace InterviewPrepApp.Models
 
                 if (created.Succeeded)
                 {
-                    var first = userManager.AddToRoleAsync(nicco, ApplicationRoles.Nicco).Result;
-                    userManager.AddToRoleAsync(nicco, ApplicationRoles.Admin);
+                    var result = userManager.AddToRoleAsync(nicco, ApplicationRoles.Nicco).Result;
                 }
             }
         }

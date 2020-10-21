@@ -4,12 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using InterviewPrepApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace InterviewPrepApp.Pages.Account
 {
+    [AllowAnonymous]
     public class RegisterModel : PageModel
     {
         private UserManager<ApplicationUser> _userManager;
@@ -45,7 +47,13 @@ namespace InterviewPrepApp.Pages.Account
 
                     return RedirectToPage("/Index");
                 }
-                ModelState.AddModelError("", "Invalid Registration. Username may already be in use.");
+                else
+                {
+                    foreach (var error in registered.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
             }
             else
             {

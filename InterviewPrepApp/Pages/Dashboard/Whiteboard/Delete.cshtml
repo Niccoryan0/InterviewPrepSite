@@ -1,0 +1,19 @@
+﻿@page "{id}"
+@model InterviewPrepApp.Pages.Dashboard.Whiteboard.DeleteModel
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "_Layout";
+}
+
+<h1>Delete</h1>
+
+<div class="card">
+    <h3>Are you sure you want to delete this question?</h3>
+    <div class="delete-container">
+        <p>@Model.Question.Question</p>
+        <form asp-action="Delete">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <a asp-page="/Dashboard/Whiteboard">Back to List</a>
+        </form>
+    </div>
+</div>

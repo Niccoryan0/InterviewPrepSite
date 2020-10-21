@@ -22,28 +22,8 @@ body {
 }
 
 .body-container {
-    padding-bottom: 150px;
     margin: 0 30px;
 }
-
-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-    footer > div {
-        margin: 0 15px;
-    }
-
 
 footer > a {
     color: white;
@@ -57,16 +37,19 @@ footer > a {
 
 .card-container {
     perspective: 700px;
+    -webkit-perspective: 700px;
     margin: 30px auto;
 }
 
 .card-flip, .card-container {
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
     transition: all 0.7s ease;
 }
 
     .card-flip div {
         backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
         transform-style: preserve-3d;
     }
 
@@ -133,4 +116,37 @@ table {
 .click-flip-explanation{
     font-size: 12px;
     margin: 0 auto;
+}
+
+.home-header, .home-body{
+    background-color: rgba(0, 0, 0, 0.6);
+    min-width:250px;
+    border-radius: 4px;
+    padding: 10px 6px;
+    margin: 4% auto;
+}
+
+.home-header {
+    width: 250px;
+}
+
+.home-body {
+    min-width: 250px;
+    max-width: 525px;
+}
+
+.home-body > h3:first-child {
+    margin-bottom: 18px;
+}
+
+.home-body > a {
+    margin-bottom: 18px;
+}
+
+.new-question{
+    margin-bottom: 30px;
+}
+
+.register {
+    max-width: 500px;
 }

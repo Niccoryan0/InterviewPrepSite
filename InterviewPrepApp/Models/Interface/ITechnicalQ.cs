@@ -26,5 +26,19 @@ namespace InterviewPrepApp.Models.Interface
         /// <param name="question">Question to be added to database</param>
         /// <returns>Task of completion for question creation</returns>
         Task Create(TechnicalQ question);
+
+        /// <summary>
+        /// Delete a technical question
+        /// </summary>
+        /// <param name="question">Question to be deleted</param>
+        /// <returns>Task of completion</returns>
+        Task Delete(int id);     
+        
+        /// <summary>
+        /// Delete a technical question
+        /// </summary>
+        /// <param name="question">Question to be deleted</param>
+        /// <returns>Task of completion</returns>
+        Task Update(TechnicalQ question);
     }
 }

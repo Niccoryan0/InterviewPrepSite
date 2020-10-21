@@ -1,0 +1,33 @@
+﻿@page "{id}"
+@model InterviewPrepApp.Pages.Dashboard.Technical.UpdateModel
+@{
+    ViewData["Title"] = "Update";
+    Layout = "_Layout";
+}
+
+<h1>Update</h1>
+
+
+<div class="card row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="@Model.Question.Question" class="control-label">Question</label>
+                <input asp-for="@Model.Question.Question" class="form-control" value="@Model.Question.Question" required />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Question.Answer" class="control-label">Answer</label>
+                <input asp-for="@Model.Question.Answer" class="form-control" value="@Model.Question.Answer" required />
+            </div>           
+            <div class="form-group">
+                <label asp-for="@Model.Question.Category" class="control-label">Category</label>
+                <input asp-for="@Model.Question.Category" class="form-control" value="@Model.Question.Category" required />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+            <a asp-page="/Dashboard/Technical">Back to List</a>
+        </form>
+    </div>
+</div>

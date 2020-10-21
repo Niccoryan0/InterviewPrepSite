@@ -34,5 +34,21 @@ namespace InterviewPrepApp.Models.Services
             _context.Entry(question).State = EntityState.Added;
             await _context.SaveChangesAsync();
         }
+
+        public async Task Delete(int id)
+        {
+            TechnicalQ question = await _context.TechnicalQs.FindAsync(id);
+            if(question != null)
+            {
+                _context.Entry(question).State = EntityState.Deleted;
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task Update(TechnicalQ question)
+        {
+            _context.Entry(question).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+        }
     }
 }

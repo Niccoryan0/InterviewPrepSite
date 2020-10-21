@@ -18,6 +18,7 @@ namespace InterviewPrepApp.Pages.Questions.Dashboard
         [BindProperty]
         public TechnicalViewModel Question { get; set; }
 
+
         public TechnicalModel(ITechnicalQ questions)
         {
             _questions = questions;
@@ -38,6 +39,7 @@ namespace InterviewPrepApp.Pages.Questions.Dashboard
                 Category = Question.Category
             };
             await _questions.Create(question);
+            AllQs = await _questions.GetTechnicalQs();
             return Page();
         }
 

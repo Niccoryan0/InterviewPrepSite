@@ -35,7 +35,6 @@ namespace InterviewPrepApp.Pages.Questions
             return Page();
         }
 
-
         public async Task GetNewQuestion()
         {
             var questions = await _questions.GetTechnicalQs();
