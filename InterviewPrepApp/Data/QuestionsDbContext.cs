@@ -18,6 +18,7 @@ namespace InterviewPrepApp.Data
         public DbSet<BehavioralQ> BehavioralQs { get; set; }
         public DbSet<WhiteboardQ> WhiteboardQs { get; set; }
         public DbSet<TraversalQ> Traversals { get; set; }
+        public DbSet<Quiz> Quizzes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -491,6 +492,17 @@ Part 4: Documents that contain both the keywords 'Blue' and 'Yellow'"
                     Id = 14,
                     Question = "Sort all values in a Stack: Recursively.",
                     Category = "Stacks and Queues"
+                }
+            );
+            builder.Entity<Quiz>().HasData(
+                new Quiz
+                {
+                    Id = 1,
+                    q1 = "Test 1",
+                    q2 = "Test 2",
+                    q3 = "Test 3",
+                    q4 = "Test 4",
+                    q5 = "Test 5"
                 }
             );
         }

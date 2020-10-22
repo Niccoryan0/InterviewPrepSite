@@ -4,14 +4,16 @@ using InterviewPrepApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace InterviewPrepApp.Migrations
 {
     [DbContext(typeof(QuestionsDbContext))]
-    partial class QuestionsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201022233223_addingQuizzees")]
+    partial class addingQuizzees
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
