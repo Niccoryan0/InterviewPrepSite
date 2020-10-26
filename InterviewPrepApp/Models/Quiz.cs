@@ -5,13 +5,14 @@ using System.Threading.Tasks;
 
 namespace InterviewPrepApp.Models
 {
-    public class Quiz
+    public class Quiz : AllPosts
     {
         public int Id { get; set; }
-        public string q1 { get; set; }
-        public string q2 { get; set; }
-        public string q3 { get; set; }
-        public string q4 { get; set; }
-        public string q5 { get; set; }
+        public string technical1 { get; set; }
+        public string technical2 { get; set; }
+        public string technical3 { get; set; }
+        public string whiteboard1 { get; set; }
+        public string whiteboard2 { get; set; }
+        public List<ForumComment> Comments
     }
 }

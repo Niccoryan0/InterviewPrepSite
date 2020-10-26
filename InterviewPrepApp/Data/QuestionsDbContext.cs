@@ -19,6 +19,7 @@ namespace InterviewPrepApp.Data
         public DbSet<WhiteboardQ> WhiteboardQs { get; set; }
         public DbSet<TraversalQ> Traversals { get; set; }
         public DbSet<Quiz> Quizzes { get; set; }
+        public DbSet<ForumComment> ForumComments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
