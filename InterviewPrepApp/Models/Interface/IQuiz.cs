@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace InterviewPrepApp.Models.Interface
 {
-    interface IQuiz
+    public interface IQuiz
     {
         /// <summary>
         /// Get all quizzes
