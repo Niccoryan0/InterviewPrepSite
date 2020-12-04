@@ -14,6 +14,13 @@ namespace InterviewPrepApp.Models.Interface
         Task<List<ForumComment>> GetComments();
 
         /// <summary>
+        /// Get all comments for a specific quiz
+        /// </summary>
+        /// <returns>List of all comments</returns>
+        Task<List<ForumComment>> GetCommentsForQuiz(int QuizId);
+
+
+        /// <summary>
         /// Create a new comment
         /// </summary>
         /// <param name="comment">ForumComment to be added to database</param>

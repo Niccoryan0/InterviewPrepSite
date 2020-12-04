@@ -23,7 +23,7 @@ namespace InterviewPrepApp.Controllers
             _questions = question;
         }
 
-        // GET: api/TechnicalQs
+        // GET: api/Technical
         [HttpGet]
         [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<TechnicalQ>>> GetTechnicalQs()

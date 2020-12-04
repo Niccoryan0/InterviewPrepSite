@@ -10,8 +10,15 @@ namespace InterviewPrepApp.Models.Interface
         /// <summary>
         /// Get all quizzes
         /// </summary>
-        /// <returns>List of all quizs</returns>
+        /// <returns>List of all quizzes</returns>
         Task<List<Quiz>> GetQuizzes();
+
+        /// <summary>
+        /// Get n number of the most recent quizzes
+        /// </summary>
+        /// <param name="n">Number of quizzes</param>
+        /// <returns>List of n most recent quizzes</returns>
+        Task<List<Quiz>> GetNRecentQuizzes(int n);
 
         /// <summary>
         /// Create a new quiz

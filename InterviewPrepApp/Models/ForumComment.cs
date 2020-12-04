@@ -11,7 +11,9 @@ namespace InterviewPrepApp.Models
     public class ForumComment : AllPosts
     {
         public int Id { get; set; }
+        [Required]
         public int QuizId { get; set; }
+        [Required]
         public string Comment { get; set; }
     }
 }

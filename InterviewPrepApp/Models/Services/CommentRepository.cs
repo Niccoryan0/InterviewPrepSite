@@ -28,6 +28,16 @@ namespace InterviewPrepApp.Models.Services
         }
 
         /// <summary>
+        /// Get all comments for a specific quiz
+        /// </summary>
+        /// <returns>List of all comments</returns>
+        public async Task<List<ForumComment>> GetCommentsForQuiz(int QuizId)
+        {
+            var comments = await _context.ForumComments.Where(x => x.QuizId == QuizId).ToListAsync();
+            return comments;
+        }
+
+        /// <summary>
         /// Create a new comment
         /// </summary>
         /// <param name="comment">ForumComment to be added to database</param>

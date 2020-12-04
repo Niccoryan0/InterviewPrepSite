@@ -8,6 +8,9 @@ namespace InterviewPrepApp.Models
 {
     public class ApplicationUser : IdentityUser
     {
+        public string Avatar { get; set; }
+        public string Level { get; set; }
+
     }
 
     public static class ApplicationRoles

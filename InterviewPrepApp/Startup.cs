@@ -83,7 +83,7 @@ namespace InterviewPrepApp
             {
                 options.AddPolicy("NiccoOnly", policy => policy.RequireRole(ApplicationRoles.Nicco));
                 options.AddPolicy("Admins", policy => policy.RequireRole(ApplicationRoles.Nicco, ApplicationRoles.Admin));
-                options.AddPolicy("Contributors", policy => policy.RequireRole(ApplicationRoles.Nicco, ApplicationRoles.Admin, ApplicationRoles.Contributor));
+                options.AddPolicy("Users", policy => policy.RequireRole(ApplicationRoles.Nicco, ApplicationRoles.Admin, ApplicationRoles.Contributor));
             });
 
             services.Configure<IdentityOptions>(options =>

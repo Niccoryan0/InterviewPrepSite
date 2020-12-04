@@ -409,6 +409,7 @@ Part 4: Documents that contain both the keywords 'Blue' and 'Yellow'"
             );
             #endregion
 
+            #region TraversalSeeding
             builder.Entity<TraversalQ>().HasData(
                 new TechnicalQ
                 {
@@ -495,17 +496,7 @@ Part 4: Documents that contain both the keywords 'Blue' and 'Yellow'"
                     Category = "Stacks and Queues"
                 }
             );
-            builder.Entity<Quiz>().HasData(
-                new Quiz
-                {
-                    Id = 1,
-                    q1 = "Test 1",
-                    q2 = "Test 2",
-                    q3 = "Test 3",
-                    q4 = "Test 4",
-                    q5 = "Test 5"
-                }
-            );
+            #endregion
         }
     }
 }

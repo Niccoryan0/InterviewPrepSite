@@ -11,10 +11,12 @@ namespace InterviewPrepApp.Models.Services
     public class QuizRepository : IQuiz
     {
         private QuestionsDbContext _context;
+        private IComment _comments;
 
-        public QuizRepository(QuestionsDbContext context)
+        public QuizRepository(QuestionsDbContext context, IComment comments)
         {
             _context = context;
+            _comments = comments;
         }
 
         /// <summary>
@@ -24,6 +26,24 @@ namespace InterviewPrepApp.Models.Services
         public async Task<List<Quiz>> GetQuizzes()
         {
             var quizzes = await _context.Quizzes.ToListAsync();
+            foreach(Quiz quiz in quizzes)
+            {
+                quiz.Comments = await _comments.GetCommentsForQuiz(quiz.Id);
+            }
+            return quizzes;
+        }
+
+        /// <summary>
+        /// Get all quizzes
+        /// </summary>
+        /// <returns>List of all quizs</returns>
+        public async Task<List<Quiz>> GetNRecentQuizzes(int n)
+        {
+            var quizzes = await _context.Quizzes.OrderByDescending(x => x.Id).Take(n).ToListAsync();
+            foreach (Quiz quiz in quizzes)
+            {
+                quiz.Comments = await _comments.GetCommentsForQuiz(quiz.Id);
+            }
             return quizzes;
         }
 
@@ -34,6 +54,8 @@ namespace InterviewPrepApp.Models.Services
         /// <returns>Task of completion for quiz creation</returns>
         public async Task Create(Quiz quiz)
         {
+            quiz.CreatedDate = DateTime.Now;
+            quiz.UpdatedDate = DateTime.Now;
             _context.Entry(quiz).State = EntityState.Added;
             await _context.SaveChangesAsync();
         }

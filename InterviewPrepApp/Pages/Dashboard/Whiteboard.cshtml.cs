@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace InterviewPrepApp.Pages.Dashboard
 {
-    [Authorize(Policy = "Contributors")]
+    [Authorize(Policy = "Users")]
     public class WhiteboardModel : PageModel
     {
         public IWhiteboardQ _questions { get; set; }
