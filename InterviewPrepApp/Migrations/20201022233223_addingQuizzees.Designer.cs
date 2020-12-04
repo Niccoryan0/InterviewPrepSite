@@ -4,14 +4,16 @@ using InterviewPrepApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace InterviewPrepApp.Migrations
 {
     [DbContext(typeof(QuestionsDbContext))]
-    partial class QuestionsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201022233223_addingQuizzees")]
+    partial class addingQuizzees
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,9 +28,6 @@ namespace InterviewPrepApp.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
-
-                    b.Property<string>("Avatar")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -239,44 +238,6 @@ namespace InterviewPrepApp.Migrations
                         });
                 });
 
-            modelBuilder.Entity("InterviewPrepApp.Models.ForumComment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Avatar")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Comment")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Downvotes")
-                        .HasColumnType("int");
-
-                    b.Property<int>("QuizId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Upvotes")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Username")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("QuizId");
-
-                    b.ToTable("ForumComments");
-                });
-
             modelBuilder.Entity("InterviewPrepApp.Models.Quiz", b =>
                 {
                     b.Property<int>("Id")
@@ -284,57 +245,35 @@ namespace InterviewPrepApp.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Avatar")
+                    b.Property<string>("q1")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Downvotes")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Upvotes")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Username")
+                    b.Property<string>("q2")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("technical1a")
+                    b.Property<string>("q3")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("technical1q")
+                    b.Property<string>("q4")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("technical2a")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("technical2q")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("technical3a")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("technical3q")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("whiteboard1a")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("whiteboard1q")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("whiteboard2a")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("whiteboard2q")
+                    b.Property<string>("q5")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Quizzes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            q1 = "Test 1",
+                            q2 = "Test 2",
+                            q3 = "Test 3",
+                            q4 = "Test 4",
+                            q5 = "Test 5"
+                        });
                 });
 
             modelBuilder.Entity("InterviewPrepApp.Models.TechnicalQ", b =>
@@ -843,15 +782,6 @@ Part 4: Documents that contain both the keywords 'Blue' and 'Yellow'"
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("InterviewPrepApp.Models.ForumComment", b =>
-                {
-                    b.HasOne("InterviewPrepApp.Models.Quiz", null)
-                        .WithMany("Comments")
-                        .HasForeignKey("QuizId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

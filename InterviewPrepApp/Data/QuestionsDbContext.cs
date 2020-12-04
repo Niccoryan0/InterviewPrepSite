@@ -18,6 +18,8 @@ namespace InterviewPrepApp.Data
         public DbSet<BehavioralQ> BehavioralQs { get; set; }
         public DbSet<WhiteboardQ> WhiteboardQs { get; set; }
         public DbSet<TraversalQ> Traversals { get; set; }
+        public DbSet<Quiz> Quizzes { get; set; }
+        public DbSet<ForumComment> ForumComments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -407,6 +409,7 @@ Part 4: Documents that contain both the keywords 'Blue' and 'Yellow'"
             );
             #endregion
 
+            #region TraversalSeeding
             builder.Entity<TraversalQ>().HasData(
                 new TechnicalQ
                 {
@@ -493,6 +496,7 @@ Part 4: Documents that contain both the keywords 'Blue' and 'Yellow'"
                     Category = "Stacks and Queues"
                 }
             );
+            #endregion
         }
     }
 }

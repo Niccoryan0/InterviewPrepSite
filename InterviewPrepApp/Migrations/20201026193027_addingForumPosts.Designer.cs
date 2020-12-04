@@ -4,14 +4,16 @@ using InterviewPrepApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace InterviewPrepApp.Migrations
 {
     [DbContext(typeof(QuestionsDbContext))]
-    partial class QuestionsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201026193027_addingForumPosts")]
+    partial class addingForumPosts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -302,39 +304,39 @@ namespace InterviewPrepApp.Migrations
                     b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("technical1a")
+                    b.Property<string>("technical1")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("technical1q")
+                    b.Property<string>("technical2")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("technical2a")
+                    b.Property<string>("technical3")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("technical2q")
+                    b.Property<string>("whiteboard1")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("technical3a")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("technical3q")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("whiteboard1a")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("whiteboard1q")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("whiteboard2a")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("whiteboard2q")
+                    b.Property<string>("whiteboard2")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Quizzes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Downvotes = 0,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Upvotes = 0,
+                            technical1 = "Test 1",
+                            technical2 = "Test 2",
+                            technical3 = "Test 3",
+                            whiteboard1 = "Test 4",
+                            whiteboard2 = "Test 5"
+                        });
                 });
 
             modelBuilder.Entity("InterviewPrepApp.Models.TechnicalQ", b =>

@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace InterviewPrepApp.Pages.Questions.Dashboard
 {
-    [Authorize(Policy = "Contributors")]
+    [Authorize(Policy = "Users")]
     public class TechnicalModel : PageModel
     {
         public ITechnicalQ _questions { get; set; }

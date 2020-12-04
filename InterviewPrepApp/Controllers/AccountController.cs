@@ -36,7 +36,8 @@ namespace InterviewPrepApp.Controllers
         {
             ApplicationUser user = new ApplicationUser()
             {
-                UserName = register.Username
+                UserName = register.Username,
+                Avatar = "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
             };
 
             var result = await _userManager.CreateAsync(user, register.Password);

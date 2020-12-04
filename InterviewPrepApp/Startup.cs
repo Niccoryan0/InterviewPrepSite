@@ -83,23 +83,25 @@ namespace InterviewPrepApp
             {
                 options.AddPolicy("NiccoOnly", policy => policy.RequireRole(ApplicationRoles.Nicco));
                 options.AddPolicy("Admins", policy => policy.RequireRole(ApplicationRoles.Nicco, ApplicationRoles.Admin));
-                options.AddPolicy("Contributors", policy => policy.RequireRole(ApplicationRoles.Nicco, ApplicationRoles.Admin, ApplicationRoles.Contributor));
+                options.AddPolicy("Users", policy => policy.RequireRole(ApplicationRoles.Nicco, ApplicationRoles.Admin, ApplicationRoles.Contributor));
             });
 
             services.Configure<IdentityOptions>(options =>
             {
                 options.Password.RequireNonAlphanumeric = true;
-                options.Password.RequireDigit = false;
-                options.Password.RequireLowercase = false;
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
                 options.Password.RequireUppercase = false;
                 options.Password.RequiredLength = 8;
-                options.Password.RequiredUniqueChars = 2;
+                options.Password.RequiredUniqueChars = 3;
             });
 
             services.AddTransient<ITechnicalQ, TechnicalQRepository>();
             services.AddTransient<IBehavioralQ, BehavioralQRepository>();
             services.AddTransient<IWhiteboardQ, WhiteboardQRepository>();
             services.AddTransient<ITraversal, TraversalRepository>();
+            services.AddTransient<IQuiz, QuizRepository>();
+            services.AddTransient<IComment, CommentRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
